@@ -1,0 +1,53 @@
+.sidebar {
+  /* background-color: rgb(193, 204, 204) !important; */
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 1000 !important;
+  height: auto;
+  width: 200px !important;
+  border-right: 1px solid gray !important;
+  justify-content: space-between !important;
+  justify-items: center !important;
+  align-items: center !important;
+  border-radius: 8px !important;
+  font-size: 0.9em !important;
+  flex-wrap: wrap !important;
+}
+
+chat {
+  cursor: pointer !important;
+  align-items: center;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-items: center !important;
+  padding-top: 4em !important;
+}
+.section2 {
+  display: flex;
+  flex-direction: column;
+  justify-items: center !important;
+}
+.section2 li {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer !important;
+  margin: auto;
+}
+
+.section2 li:hover {
+  background-color: rgb(208, 223, 218);
+  border-radius: 6px;
+}
+
+chat:hover {
+  background-color: rgb(208, 223, 218);
+  border-radius: 6px;
+}
+
+.section2 p {
+  margin: 0 !important;
+  padding: 4px !important;
+}

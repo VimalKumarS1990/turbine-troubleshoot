@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-bg {
   display: flex;
-  flex-direction: column;
+  background-image: url("../src/assets/images/Banner.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  width: 100%;
+  height: 10vh;
+  align-items: center;
+}
+.header-text {
+  display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-shadow: 5px 2px 2px rgb(244, 249, 250);
+  color: rgba(88, 51, 16, 0.774);
+  font-weight: bolder !important;
+  text-align: center;
+  align-items: center;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-icon {
+  font-size: 25px; /* Adjust as needed */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Mobile devices: from 320px to 767px */
+@media screen and (max-width: 767px) {
+  .heading {
+    font-size: 1em !important;
   }
-  to {
-    transform: rotate(360deg);
+  .response-area {
+    font-size: 1em !important;
+  }
+}
+
+/* Tablet devices: from 768px to 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .heading {
+    font-size: 1.2em !important;
+  }
+  .response-area {
+    font-size: 1.2em !important;
+  }
+}
+
+/* Laptop devices: from 1025px upwards */
+@media screen and (min-width: 1025px) {
+  .heading {
+    font-size: 1.5em !important;
+  }
+  .response-area {
+    font-size: 1.25em !important;
+  }
+}
+
+/* Larger screens (Desktops): for widths larger than 1200px */
+@media screen and (min-width: 1200px) {
+  .heading {
+    font-size: 2em !important;
+  }
+  .response-area {
+    font-size: 1.25em !important;
   }
 }

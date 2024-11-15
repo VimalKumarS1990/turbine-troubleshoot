@@ -1,0 +1,6 @@
+.chat-space {
+  height: 70vh !important;
+  width: 100% !important;
+  overflow-y: auto;
+  scrollbar-width: 0;
+}
