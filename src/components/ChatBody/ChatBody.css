@@ -2,7 +2,6 @@
 .typewriter {
   display: inline-block;
   overflow: hidden;
-  white-space: nowrap;
   animation: typing 4s steps(50) 1, blink 0.75s step-end infinite;
 }
 

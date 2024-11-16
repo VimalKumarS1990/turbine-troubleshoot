@@ -1,5 +1,7 @@
 import React from "react";
 import "./ChatBody.css";
+import { RiRobot3Line } from "react-icons/ri";
+import TypingEffect from "../Reusable/TypingEffect/TypingEffect";
 
 const ChatBody = ({ chatData }) => {
   console.log("User Input: ", chatData);
@@ -10,7 +12,6 @@ const ChatBody = ({ chatData }) => {
         fontSize: "1em",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "end",
       }}
     >
       {chatData?.map((item, index) =>
@@ -22,13 +23,20 @@ const ChatBody = ({ chatData }) => {
               textAlign: item.user === "bot-user" ? "end" : "left",
             }}
           >
-            <p>
-              <span
-                className={item.user === "bot-user" ? "botUser" : "typewriter"}
-              >
-                &nbsp;&nbsp;{item.msg}&nbsp;&nbsp;
+            <div>
+              <span className={item.user === "bot-user" ? "botUser" : ""}>
+                <span>
+                  {item.user === "bot-user" ? (
+                    <span>&nbsp;&nbsp;{item.msg}&nbsp;&nbsp;</span>
+                  ) : (
+                    <span className="d-flex">
+                      <RiRobot3Line style={{ fontSize: "1.5em" }} />
+                      <TypingEffect text={item.msg} typingSpeed={50} />
+                    </span>
+                  )}
+                </span>
               </span>
-            </p>
+            </div>
           </div>
         ) : null
       )}
