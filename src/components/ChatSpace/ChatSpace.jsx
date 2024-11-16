@@ -3,11 +3,11 @@ import "./ChatSpace.css";
 
 import ChatBody from "../ChatBody/ChatBody";
 
-const ChatSpace = () => {
+const ChatSpace = ({ userInput }) => {
   return (
     <section className="chat-space card mx-1">
       <div className="card-body d-flex">
-        <ChatBody />
+        <ChatBody userInput={userInput} />
       </div>
     </section>
   );

@@ -1,10 +1,17 @@
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import brandLogo from "../src/assets/images/brandLogo.png";
 import ChatSpace from "./components/ChatSpace/ChatSpace";
 import UserInputBox from "./components/UserInputBox/UserInputBox";
 import SideBar from "./components/SideBar/SideBar";
+import { useState } from "react";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 function App() {
+  const [userInput, setUserInput] = useState([]);
+  const popup = toast;
+  const botUser = "John Doe";
+
   return (
     <div className="App container-fluid p-1">
       <header className="row m-1">
@@ -32,11 +39,29 @@ function App() {
         </div>
       </header>
       <div className="container-fluid p-1">
-        <div class="d-flex">
+        <div className="d-flex">
           <SideBar />
           <div className="col">
-            <ChatSpace />
-            <UserInputBox />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
+            <ChatSpace userInput={userInput} />
+            <UserInputBox
+              botUser={botUser}
+              setUserInput={setUserInput}
+              userInput={userInput}
+              toast={popup}
+            />
           </div>
         </div>
       </div>

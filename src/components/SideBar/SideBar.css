@@ -14,7 +14,7 @@
   flex-wrap: wrap !important;
 }
 
-chat {
+.chat {
   cursor: pointer !important;
   align-items: center;
 }
@@ -23,7 +23,14 @@ chat {
   display: flex;
   flex-direction: column;
   justify-items: center !important;
-  padding-top: 4em !important;
+  padding-top: 1em !important;
+}
+.section1 li {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer !important;
+  margin: auto;
+  justify-content: center !important;
 }
 .section2 {
   display: flex;
@@ -34,6 +41,12 @@ chat {
   display: flex;
   align-items: baseline;
   cursor: pointer !important;
+  margin: auto;
+}
+
+.section1 li:hover {
+  background-color: rgb(208, 223, 218);
+  border-radius: 6px;
   margin: auto;
 }
 

@@ -33,22 +33,30 @@ const SideBar = () => {
           >
             + New Work Order
           </button> */}
-          <chat className="chat d-flex align-items-center p-1">
-            <span>
-              <MdOutlineChat />
-            </span>
-            <span className="ml-1">
-              <p style={{ fontWeight: "500", margin: 0 }}>Prev - WO-Conv-1</p>
-            </span>
-          </chat>
-          <chat className="chat d-flex align-items-center p-1">
-            <span>
-              <MdOutlineChat />
-            </span>
-            <span className="ml-1">
-              <p style={{ fontWeight: "500", margin: 0 }}>Prev - WO-Conv-1</p>
-            </span>
-          </chat>
+          <div className="chat d-flex align-items-center p-1">
+            <ul className="p-0">
+              <li className="p-1">
+                <span>
+                  <MdOutlineChat />
+                </span>
+                <span className="ml-1">
+                  <p style={{ fontWeight: "500", margin: 0 }}>
+                    Prev - WO-Conv-1
+                  </p>
+                </span>
+              </li>
+              <li className="p-1">
+                <span>
+                  <MdOutlineChat />
+                </span>
+                <span className="ml-1">
+                  <p style={{ fontWeight: "500", margin: 0 }}>
+                    Prev - WO-Conv-2
+                  </p>
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="section2">
           <hr />
