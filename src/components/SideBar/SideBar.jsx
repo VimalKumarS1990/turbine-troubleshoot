@@ -27,12 +27,12 @@ const SideBar = () => {
         }}
       >
         <div className="section1">
-          {/* <button
+          <button
             className="btn btn-dark mb-4 mt-4"
-            style={{ fontSize: "0.9em" }}
+            style={{ fontSize: "0.9em", borderRadius: "50px" }}
           >
-            + New Work Order
-          </button> */}
+            New Chat
+          </button>
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
               <li className="p-1">

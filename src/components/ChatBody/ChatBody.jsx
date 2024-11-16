@@ -1,20 +1,37 @@
 import React from "react";
 import "./ChatBody.css";
 
-const ChatBody = ({ userInput }) => {
-  console.log(userInput);
+const ChatBody = ({ chatData }) => {
+  console.log("User Input: ", chatData);
   return (
-    <div style={{ fontSize: "1em", display: "inline-block" }}>
-      {/* <Typewriter words={userInput} typeSpeed={60} cursor={true} loop={1} /> */}
-      <ul className="list-unstyled">
-        {userInput?.map((item, index) =>
-          item.user && item.msg ? (
-            <li key={index} className="question">
-              <p className={userInput.length ? "typewriter" : ""}>{item.msg}</p>
-            </li>
-          ) : null
-        )}
-      </ul>
+    <div
+      className="col"
+      style={{
+        fontSize: "1em",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "end",
+      }}
+    >
+      {chatData?.map((item, index) =>
+        item.user && item.msg ? (
+          <div
+            key={index}
+            className="row"
+            style={{
+              textAlign: item.user === "bot-user" ? "end" : "left",
+            }}
+          >
+            <p>
+              <span
+                className={item.user === "bot-user" ? "botUser" : "typewriter"}
+              >
+                &nbsp;&nbsp;{item.msg}&nbsp;&nbsp;
+              </span>
+            </p>
+          </div>
+        ) : null
+      )}
     </div>
   );
 };

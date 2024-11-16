@@ -4,14 +4,14 @@ import "./UserInputBox.css";
 import { MdKeyboardVoice } from "react-icons/md";
 
 const UserInputBox = (props) => {
-  const { botUser, setUserInput, toast } = props;
+  const { botUser, setChatData, toast } = props;
 
   const [inputTxt, setInputTxt] = useState("");
 
   const inputRef = useRef(null);
 
   const addUserInput = (newInput) => {
-    setUserInput((prev) => {
+    setChatData((prev) => {
       const updatedUserInput = [...prev];
       updatedUserInput.push(newInput);
       return updatedUserInput;

@@ -3,7 +3,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 0.5s steps(10) 1, blink 0.75s step-end infinite;
+  animation: typing 4s steps(50) 1, blink 0.75s step-end infinite;
 }
 
 @keyframes typing {
@@ -14,16 +14,7 @@
     width: 100%;
   }
 }
-
-/* .question {
-  background-color: #e3e3e3;
-  border-radius: 8px !important;
-  align-items: center !important;
-  text-align: left !important;
-  padding: 0;
-  margin-bottom: 6px !important;
+.botUser {
+  background-color: rgba(229, 243, 247, 0.795);
+  border-radius: 10px;
 }
-.question p {
-  margin-bottom: 0 !important;
-  margin-inline: 10px !important;
-} */

@@ -8,9 +8,11 @@ import { useState } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 
 function App() {
-  const [userInput, setUserInput] = useState([]);
+  const [chatData, setChatData] = useState([
+    { user: "gpt", msg: "Hello! Welcome to WindTurbine Troubleshooter!" },
+  ]);
   const popup = toast;
-  const botUser = "John Doe";
+  const botUser = "bot-user";
 
   return (
     <div className="App container-fluid p-1">
@@ -55,11 +57,11 @@ function App() {
               theme="light"
               transition={Bounce}
             />
-            <ChatSpace userInput={userInput} />
+            <ChatSpace chatData={chatData} />
             <UserInputBox
               botUser={botUser}
-              setUserInput={setUserInput}
-              userInput={userInput}
+              setChatData={setChatData}
+              chatData={chatData}
               toast={popup}
             />
           </div>
