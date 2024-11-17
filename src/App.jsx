@@ -8,11 +8,16 @@ import { useState } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 
 function App() {
-  const [chatData, setChatData] = useState([
-    { user: "gpt", msg: "Hello! Welcome to WindTurbine Troubleshooter!" },
-  ]);
   const popup = toast;
+  const botSystem = "gpt";
   const botUser = "bot-user";
+
+  const [chatData, setChatData] = useState([
+    {
+      role: botSystem,
+      content: "Hello! Welcome to WindTurbine Troubleshooter!",
+    },
+  ]);
 
   return (
     <div className="App container-fluid p-1">
@@ -43,7 +48,7 @@ function App() {
       <div className="container-fluid p-1">
         <div className="d-flex">
           <SideBar />
-          <div className="col">
+          <div className="col pl-0">
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -57,6 +62,7 @@ function App() {
               theme="light"
               transition={Bounce}
             />
+
             <ChatSpace chatData={chatData} />
             <UserInputBox
               botUser={botUser}

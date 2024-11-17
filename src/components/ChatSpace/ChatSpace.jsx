@@ -2,7 +2,6 @@ import React from "react";
 import "./ChatSpace.css";
 
 import ChatBody from "../ChatBody/ChatBody";
-
 const ChatSpace = ({ chatData }) => {
   return (
     <section className="chat-space card mx-1">

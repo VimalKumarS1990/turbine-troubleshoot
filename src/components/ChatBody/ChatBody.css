@@ -1,19 +1,14 @@
-/* Define the typewriter effect */
-.typewriter {
-  display: inline-block;
-  overflow: hidden;
-  animation: typing 4s steps(50) 1, blink 0.75s step-end infinite;
+.chat-container {
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  scrollbar-width: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
 .botUser {
-  background-color: rgba(229, 243, 247, 0.795);
+  background-color: #f3eeeea6;
   border-radius: 10px;
 }

@@ -1,0 +1,17 @@
+.btn-down {
+  border-radius: 50px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  z-index: 10;
+}
+.scroll-to-bottom-btn {
+  position: fixed;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to perfectly center */
+  z-index: 10; /* Keep the button on top */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

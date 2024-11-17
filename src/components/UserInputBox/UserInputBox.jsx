@@ -22,7 +22,7 @@ const UserInputBox = (props) => {
     if (event.key === "Enter") {
       event.preventDefault();
       if (inputTxt !== "") {
-        const newInput = { user: botUser, msg: inputTxt };
+        const newInput = { role: botUser, content: inputTxt };
         addUserInput(newInput);
         setInputTxt("");
       }
@@ -32,7 +32,7 @@ const UserInputBox = (props) => {
   const handleSendButton = (event) => {
     event.preventDefault();
     if (inputTxt !== "") {
-      const newInput = { user: botUser, msg: inputTxt };
+      const newInput = { role: botUser, content: inputTxt };
       addUserInput(newInput);
       setInputTxt("");
     }
