@@ -4,14 +4,15 @@
   margin: 0;
   border: none;
   z-index: 10;
+  margin-right: 5px; /*userinput-sec */
 }
-.scroll-to-bottom-btn {
+/* .scroll-to-bottom-btn {
   position: fixed;
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust to perfectly center */
-  z-index: 10; /* Keep the button on top */
+  left: 50%; 
+  transform: translateX(-50%); 
+  z-index: 10;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */

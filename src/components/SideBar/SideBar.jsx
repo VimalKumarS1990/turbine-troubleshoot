@@ -7,12 +7,16 @@ import { CiLight } from "react-icons/ci";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoMdOpen } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
-
+import { toast } from "react-toastify";
 const SideBar = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
+  };
+
+  const featureNotAvailable = () => {
+    toast.error("This feature is currently not available!");
   };
 
   return (
@@ -30,12 +34,13 @@ const SideBar = () => {
           <button
             className="btn btn-dark mb-4 mt-4"
             style={{ fontSize: "0.9em", borderRadius: "50px" }}
+            onClick={featureNotAvailable}
           >
             New Chat
           </button>
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
-              <li className="p-1">
+              <li className="p-1" onClick={featureNotAvailable}>
                 <span>
                   <MdOutlineChat />
                 </span>
@@ -45,7 +50,7 @@ const SideBar = () => {
                   </p>
                 </span>
               </li>
-              <li className="p-1">
+              <li className="p-1" onClick={featureNotAvailable}>
                 <span>
                   <MdOutlineChat />
                 </span>
@@ -55,13 +60,23 @@ const SideBar = () => {
                   </p>
                 </span>
               </li>
+              <li className="p-1" onClick={featureNotAvailable}>
+                <span>
+                  <MdOutlineChat />
+                </span>
+                <span className="ml-1">
+                  <p style={{ fontWeight: "500", margin: 0 }}>
+                    Prev - WO-Conv-3
+                  </p>
+                </span>
+              </li>
             </ul>
           </div>
         </div>
         <div className="section2">
           <hr />
           <ul className="p-2">
-            <li style={{ paddingTop: 0 }}>
+            <li style={{ paddingTop: 0 }} onClick={featureNotAvailable}>
               <span className="ml-2">
                 <RiDeleteBin5Line />
               </span>
@@ -69,7 +84,7 @@ const SideBar = () => {
                 <p>Clear Prev.Chats</p>
               </span>
             </li>
-            <li>
+            <li onClick={featureNotAvailable}>
               <span className="ml-2">
                 <CiLight />
               </span>
@@ -77,7 +92,7 @@ const SideBar = () => {
                 <p>Light Mode</p>
               </span>
             </li>
-            <li>
+            <li onClick={featureNotAvailable}>
               <span className="ml-2">
                 <IoPersonOutline />
               </span>
@@ -85,7 +100,7 @@ const SideBar = () => {
                 <p>My Profile</p>
               </span>
             </li>
-            <li>
+            <li onClick={featureNotAvailable}>
               <span className="ml-2">
                 <IoMdOpen />
               </span>
@@ -93,7 +108,7 @@ const SideBar = () => {
                 <p>Help/FAQ</p>
               </span>
             </li>
-            <li>
+            <li onClick={featureNotAvailable}>
               <span className="ml-2">
                 <FiLogOut />
               </span>

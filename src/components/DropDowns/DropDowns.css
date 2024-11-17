@@ -1,0 +1,18 @@
+.dropdown-btn {
+  height: 25px !important;
+  padding-top: 0 !important;
+  font-size: 0.9em !important;
+}
+.dropdown-menu {
+  min-width: 105% !important;
+}
+
+@media screen and (max-width: 370px) {
+  .dropDown-container {
+    flex-direction: column;
+    row-gap: 0.5em !important;
+  }
+  .sec2 {
+    margin-left: 0 !important;
+  }
+}

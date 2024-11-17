@@ -15,7 +15,11 @@ const TypingEffect = ({ text, typingSpeed }) => {
     return () => clearInterval(interval); // Cleanup on unmount
   }, [index, text.length, typingSpeed]);
 
-  return <span>{text.substring(0, index)}</span>;
+  return (
+    <div style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+      <span>{text.substring(0, index)}</span>
+    </div>
+  );
 };
 
 export default TypingEffect;

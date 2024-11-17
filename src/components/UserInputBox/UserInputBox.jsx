@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 import "./UserInputBox.css";
 import { MdKeyboardVoice } from "react-icons/md";
-
+import ScrollToBottom from "../Reusable/TypingEffect/ScrollToBottom/ScrollToBottom";
 const UserInputBox = (props) => {
   const { botUser, setChatData, toast } = props;
 
@@ -47,9 +47,10 @@ const UserInputBox = (props) => {
   return (
     <div className="user-input bg-light">
       <div className="inner-box ">
+        <ScrollToBottom section="parent" />
         <button
           className="btn"
-          style={{ borderRadius: "50px", padding: "0", marginLeft: "20px" }}
+          style={{ borderRadius: "50px", padding: "0" }}
           onClick={handleTxtToSpeech}
         >
           <MdKeyboardVoice style={{ width: "25px", height: "25px" }} />

@@ -2,13 +2,13 @@ import React from "react";
 import "./ChatBody.css";
 import { RiRobot3Line } from "react-icons/ri";
 import TypingEffect from "../Reusable/TypingEffect/TypingEffect";
-import ScrollToBottom from "../Reusable/TypingEffect/ScrollToBottom/ScrollToBottom";
+// import ScrollToBottom from "../Reusable/TypingEffect/ScrollToBottom/ScrollToBottom";
 
 const ChatBody = ({ chatData }) => {
   console.log("Chat-Data: ", chatData);
   return (
     <div id="parent" className="col chat-container">
-      <ScrollToBottom section="parent" />
+      {/* <ScrollToBottom section="parent" /> */}
 
       {chatData?.map((item, index) =>
         item.role && item.content ? (

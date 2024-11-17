@@ -40,9 +40,6 @@ body {
   .response-area {
     font-size: 1em !important;
   }
-  .scroll-to-bottom-btn {
-    bottom: 150px !important;
-  }
 }
 
 /* Tablet devices: from 768px to 1024px */
@@ -52,9 +49,6 @@ body {
   }
   .response-area {
     font-size: 1.2em !important;
-  }
-  .scroll-to-bottom-btn {
-    bottom: 150px !important;
   }
 }
 
@@ -66,9 +60,6 @@ body {
   .response-area {
     font-size: 1.25em !important;
   }
-  .scroll-to-bottom-btn {
-    bottom: 150px !important;
-  }
 }
 
 /* Larger screens (Desktops): for widths larger than 1200px */
@@ -78,9 +69,6 @@ body {
   }
   .response-area {
     font-size: 1.25em !important;
-  }
-  .scroll-to-bottom-btn {
-    bottom: 150px !important;
   }
 }
 

@@ -6,16 +6,24 @@ import UserInputBox from "./components/UserInputBox/UserInputBox";
 import SideBar from "./components/SideBar/SideBar";
 import { useState } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+import DropDowns from "./components/DropDowns/DropDowns";
 
 function App() {
   const popup = toast;
   const botSystem = "gpt";
   const botUser = "bot-user";
 
+  const facilityList = ["Facility 1", "Facility 2", "Facility 3", "Facility 4"];
+  const turbineList = ["Turbine 1", "Turbine 2", "Turbine 3", "Turbine 4"];
+
+  const [facility, setFacility] = useState(null);
+  const [turbine, setTurbine] = useState(null);
+
   const [chatData, setChatData] = useState([
     {
       role: botSystem,
-      content: "Hello! Welcome to WindTurbine Troubleshooter!",
+      content:
+        "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine to start the conversation.",
     },
   ]);
 
@@ -63,6 +71,14 @@ function App() {
               transition={Bounce}
             />
 
+            <DropDowns
+              facilityList={facilityList}
+              turbineList={turbineList}
+              facility={facility}
+              turbine={turbine}
+              setFacility={setFacility}
+              setTurbine={setTurbine}
+            />
             <ChatSpace chatData={chatData} />
             <UserInputBox
               botUser={botUser}
