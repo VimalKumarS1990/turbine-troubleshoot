@@ -4,6 +4,7 @@ import { IoArrowDownCircleOutline } from "react-icons/io5";
 
 const ScrollToBottom = ({ section }) => {
   const scrollToLastChild = (e) => {
+    console.log("ScrollToBottom");
     e.preventDefault();
     const targetSection = document.getElementById(section);
 

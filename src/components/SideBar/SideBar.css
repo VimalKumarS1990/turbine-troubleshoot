@@ -6,7 +6,7 @@
   height: auto;
   width: 200px !important;
   border-right: 1px solid gray !important;
-  justify-content: space-between !important;
+  justify-content: space-around !important;
   justify-items: center !important;
   align-items: center !important;
   border-radius: 8px !important;
@@ -63,4 +63,9 @@ chat:hover {
 .section2 p {
   margin: 0 !important;
   padding: 4px !important;
+}
+
+.btn {
+  outline: none !important;
+  box-shadow: none !important;
 }

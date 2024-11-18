@@ -27,12 +27,12 @@ const SideBar = () => {
         } d-lg-flex`}
         style={{
           position: isNavVisible ? "absolute" : "relative",
-          height: isNavVisible ? "90%" : "auto",
+          height: isNavVisible ? "85%" : "auto",
         }}
       >
         <div className="section1">
           <button
-            className="btn btn-dark mb-4 mt-4"
+            className="btn btn-dark mb-4"
             style={{ fontSize: "0.9em", borderRadius: "50px" }}
             onClick={featureNotAvailable}
           >
@@ -132,6 +132,7 @@ const SideBar = () => {
           border: "none",
           zIndex: "1001",
           marginLeft: "10px",
+          outline: "none",
         }}
         aria-label="Toggle menu"
       >

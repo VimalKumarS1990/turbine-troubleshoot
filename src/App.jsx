@@ -18,12 +18,13 @@ function App() {
 
   const [facility, setFacility] = useState(null);
   const [turbine, setTurbine] = useState(null);
+  const [disableUserInput] = useState(false);
 
   const [chatData, setChatData] = useState([
     {
       role: botSystem,
       content:
-        "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine to start the conversation.",
+        "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation.",
     },
   ]);
 
@@ -81,6 +82,7 @@ function App() {
             />
             <ChatSpace chatData={chatData} />
             <UserInputBox
+              disableUserInput={disableUserInput}
               botUser={botUser}
               setChatData={setChatData}
               chatData={chatData}
