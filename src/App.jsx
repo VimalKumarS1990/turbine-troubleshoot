@@ -24,11 +24,14 @@ function App() {
     { turbineCode: "003", turbineName: "Turbine 3" },
   ];
 
+  const generateChatId = () => `chat-${Date.now()}`;
+
   const [facility, setFacility] = useState(null);
   const [turbine, setTurbine] = useState(null);
 
   const [chatData, setChatData] = useState([
     {
+      id: generateChatId(),
       role: botSystem,
       content:
         "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation.",

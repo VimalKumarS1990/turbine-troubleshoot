@@ -73,7 +73,7 @@ const UserInputBox = (props) => {
           placeholder={
             !(facility && turbine)
               ? "Please select Facility & Turbine to enable chat"
-              : "Enter the error code!"
+              : "Enter the Scada ID/Error Description!"
           }
           className="txt-area"
           onKeyDown={handleKeyInput}
