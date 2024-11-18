@@ -33,6 +33,7 @@ function App() {
     {
       chatId: generateChatId(),
       role: botSystem,
+      timestamp: new Date().toLocaleString(),
       content:
         "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation.",
     },

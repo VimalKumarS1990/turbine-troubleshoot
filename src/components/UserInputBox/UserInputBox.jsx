@@ -12,7 +12,14 @@ const UserInputBox = (props) => {
   const addUserInput = (newInput) => {
     setChatData((prev) => {
       const genChatId = prev[0].chatId;
-      const updatedUserInput = [...prev, { ...newInput, chatId: genChatId }];
+      const updatedUserInput = [
+        ...prev,
+        {
+          ...newInput,
+          chatId: genChatId,
+          timestamp: new Date().toLocaleString(),
+        },
+      ];
       return updatedUserInput;
     });
   };
