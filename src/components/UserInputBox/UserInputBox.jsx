@@ -2,12 +2,17 @@ import React, { useRef, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 import "./UserInputBox.css";
 import { MdKeyboardVoice } from "react-icons/md";
+import { useSpeechRecognition } from "react-speech-kit";
 const UserInputBox = (props) => {
-  const { botUser, setChatData, toast, facility, turbine } = props;
+  const { botUser, setChatData, facility, turbine } = props;
 
   const [inputTxt, setInputTxt] = useState("");
 
   const inputRef = useRef(null);
+
+  const { listen, stop } = useSpeechRecognition({
+    onResult: (result) => setInputTxt(result),
+  });
 
   const addUserInput = (newInput) => {
     setChatData((prev) => {
@@ -55,19 +60,19 @@ const UserInputBox = (props) => {
     inputRef.current.focus();
   };
 
-  const handleTxtToSpeech = () => {
-    toast.error("This feature is currently not available!");
-    inputRef.current.focus();
-  };
-
   return (
     <div className="user-input bg-light">
       <div className="inner-box ">
         <button
           className="btn"
           disabled={!(facility && turbine)}
-          style={{ borderRadius: "50px", padding: "0" }}
-          onClick={handleTxtToSpeech}
+          style={{
+            borderRadius: "50px",
+            padding: "0",
+            border: "1px solid black",
+          }}
+          onMouseDown={listen}
+          onMouseUp={stop}
         >
           <MdKeyboardVoice style={{ width: "25px", height: "25px" }} />
         </button>
@@ -90,7 +95,11 @@ const UserInputBox = (props) => {
         <button
           className="btn"
           disabled={!(facility && turbine)}
-          style={{ borderRadius: "50px", padding: "0" }}
+          style={{
+            borderRadius: "50px",
+            padding: "0",
+            border: "1px solid black",
+          }}
           onClick={handleSendButton}
         >
           <FaArrowCircleUp style={{ width: "32px", height: "32px" }} />
