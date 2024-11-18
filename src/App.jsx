@@ -31,7 +31,7 @@ function App() {
 
   const [chatData, setChatData] = useState([
     {
-      id: generateChatId(),
+      chatId: generateChatId(),
       role: botSystem,
       content:
         "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation.",
