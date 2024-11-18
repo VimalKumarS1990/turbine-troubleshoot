@@ -7,12 +7,23 @@ const UserInputBox = (props) => {
   const { botUser, setChatData, facility, turbine } = props;
 
   const [inputTxt, setInputTxt] = useState("");
+  const [isListening, setIsListening] = useState(false);
 
   const inputRef = useRef(null);
 
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => setInputTxt(result),
   });
+
+  const handleMouseDown = () => {
+    setIsListening(true);
+    listen();
+  };
+
+  const handleMouseUp = () => {
+    setIsListening(false);
+    stop();
+  };
 
   const addUserInput = (newInput) => {
     setChatData((prev) => {
@@ -70,9 +81,11 @@ const UserInputBox = (props) => {
             borderRadius: "50px",
             padding: "0",
             border: "1px solid black",
+            backgroundColor: isListening ? "green" : "",
+            color: isListening ? "white" : "",
           }}
-          onMouseDown={listen}
-          onMouseUp={stop}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
         >
           <MdKeyboardVoice style={{ width: "25px", height: "25px" }} />
         </button>
@@ -99,6 +112,8 @@ const UserInputBox = (props) => {
             borderRadius: "50px",
             padding: "0",
             border: "1px solid black",
+            backgroundColor: inputTxt.length > 0 ? "white" : "",
+            color: inputTxt.length > 0 ? "green" : "",
           }}
           onClick={handleSendButton}
         >
