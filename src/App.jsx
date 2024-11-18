@@ -11,17 +11,26 @@ import DropDowns from "./components/DropDowns/DropDowns";
 function App() {
   const popup = toast;
   const botSystem = "gpt";
-  const botUser = "bot-user";
+  const botUser = "user";
 
-  const facilityList = ["Facility 1", "Facility 2", "Facility 3", "Facility 4"];
-  const turbineList = ["Turbine 1", "Turbine 2", "Turbine 3", "Turbine 4"];
+  const facilityList = [
+    { facilityCode: "001", facilityName: "Facility 1" },
+    { facilityCode: "002", facilityName: "Facility 2" },
+    { facilityCode: "003", facilityName: "Facility 3" },
+  ];
+  const turbineList = [
+    { turbineCode: "001", turbineName: "Turbine 1" },
+    { turbineCode: "002", turbineName: "Turbine 2" },
+    { turbineCode: "003", turbineName: "Turbine 3" },
+  ];
 
   const [facility, setFacility] = useState(null);
   const [turbine, setTurbine] = useState(null);
-  const [disableUserInput] = useState(false);
 
   const [chatData, setChatData] = useState([
     {
+      facility: facility,
+      turbine: turbine,
       role: botSystem,
       content:
         "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation.",
@@ -48,7 +57,6 @@ function App() {
               Enbridge
             </p>
           </a>
-
           <div className="header-text">
             <p className="heading m-auto">WindTurbine Troubleshooter</p>
           </div>
@@ -71,7 +79,6 @@ function App() {
               theme="light"
               transition={Bounce}
             />
-
             <DropDowns
               facilityList={facilityList}
               turbineList={turbineList}
@@ -80,13 +87,14 @@ function App() {
               setFacility={setFacility}
               setTurbine={setTurbine}
             />
-            <ChatSpace chatData={chatData} />
+            <ChatSpace chatData={chatData} botUser={botUser} />
             <UserInputBox
-              disableUserInput={disableUserInput}
               botUser={botUser}
               setChatData={setChatData}
               chatData={chatData}
               toast={popup}
+              facility={facility}
+              turbine={turbine}
             />
           </div>
         </div>

@@ -3,7 +3,7 @@ import { FaArrowCircleUp } from "react-icons/fa";
 import "./UserInputBox.css";
 import { MdKeyboardVoice } from "react-icons/md";
 const UserInputBox = (props) => {
-  const { disableUserInput, botUser, setChatData, toast } = props;
+  const { botUser, setChatData, toast, facility, turbine } = props;
 
   const [inputTxt, setInputTxt] = useState("");
 
@@ -21,7 +21,12 @@ const UserInputBox = (props) => {
     if (event.key === "Enter") {
       event.preventDefault();
       if (inputTxt !== "") {
-        const newInput = { role: botUser, content: inputTxt };
+        const newInput = {
+          facility: facility,
+          turbine: turbine,
+          role: botUser,
+          content: inputTxt,
+        };
         addUserInput(newInput);
         setInputTxt("");
       }
@@ -31,7 +36,12 @@ const UserInputBox = (props) => {
   const handleSendButton = (event) => {
     event.preventDefault();
     if (inputTxt !== "") {
-      const newInput = { role: botUser, content: inputTxt };
+      const newInput = {
+        facility: facility,
+        turbine: turbine,
+        role: botUser,
+        content: inputTxt,
+      };
       addUserInput(newInput);
       setInputTxt("");
     }
@@ -48,6 +58,7 @@ const UserInputBox = (props) => {
       <div className="inner-box ">
         <button
           className="btn"
+          disabled={!(facility && turbine)}
           style={{ borderRadius: "50px", padding: "0" }}
           onClick={handleTxtToSpeech}
         >
@@ -56,10 +67,14 @@ const UserInputBox = (props) => {
 
         <textarea
           type="text"
-          disabled={disableUserInput}
+          disabled={!(facility && turbine)}
           ref={inputRef}
           value={inputTxt}
-          placeholder="Enter the error code!"
+          placeholder={
+            !(facility && turbine)
+              ? "Please select Facility & Turbine to enable chat"
+              : "Enter the error code!"
+          }
           className="txt-area"
           onKeyDown={handleKeyInput}
           onChange={(e) => setInputTxt(e.target.value)}
@@ -67,6 +82,7 @@ const UserInputBox = (props) => {
         ></textarea>
         <button
           className="btn"
+          disabled={!(facility && turbine)}
           style={{ borderRadius: "50px", padding: "0" }}
           onClick={handleSendButton}
         >

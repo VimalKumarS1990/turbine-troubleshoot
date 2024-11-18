@@ -4,7 +4,7 @@ import { RiRobot3Line } from "react-icons/ri";
 import TypingEffect from "../Reusable/TypingEffect";
 import ScrollToBottom from "../Reusable/ScrollToBottom/ScrollToBottom";
 
-const ChatBody = ({ chatData }) => {
+const ChatBody = ({ chatData, botUser }) => {
   console.log("Chat-Data: ", chatData);
 
   const totalCharacters = chatData.reduce((sum, obj) => {
@@ -20,14 +20,14 @@ const ChatBody = ({ chatData }) => {
             key={index}
             className="row pb-3"
             style={{
-              textAlign: item.role === "bot-user" ? "end" : "left",
+              textAlign: item.role === botUser ? "end" : "left",
             }}
           >
             <div>
               {totalCharacters > 200 && <ScrollToBottom section="parent" />}
-              <span className={item.role === "bot-user" ? "botUser" : ""}>
+              <span className={item.role === botUser ? "botUser" : ""}>
                 <span>
-                  {item.role === "bot-user" ? (
+                  {item.role === botUser ? (
                     <span>&nbsp;&nbsp;{item.content}&nbsp;&nbsp;</span>
                   ) : (
                     <span className="d-flex">
