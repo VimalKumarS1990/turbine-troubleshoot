@@ -25,7 +25,7 @@ const HomePage = () => {
     { turbineCode: '003', turbineName: 'Turbine 3' }
   ];
 
-  const generateChatId = () => `chat-${Date.now()}`;
+  const generateChatId = () => `chat-${Math.floor(100000 + Math.random() * 900000).toString()}`;
 
   const storedChatData = JSON.parse(localStorage.getItem('chatData'));
 

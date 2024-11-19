@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SideBar.css';
 import { MdOutlineChat } from 'react-icons/md';
 import { BiMenuAltLeft } from 'react-icons/bi';
@@ -7,9 +7,11 @@ import { CiLight } from 'react-icons/ci';
 import { IoPersonOutline } from 'react-icons/io5';
 import { IoMdOpen } from 'react-icons/io';
 import { FiLogOut } from 'react-icons/fi';
+import { AiOutlineStop } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 const SideBar = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
+  const [storageHistoryData, setStorageHistoryData] = useState([]);
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
@@ -19,13 +21,39 @@ const SideBar = () => {
     toast.error('This feature is currently not available!');
   };
 
+  const handleClearHistory = () => {
+    localStorage.removeItem('chatHistory');
+    setStorageHistoryData([]);
+    toast.success('Chat History Cleared!');
+  };
+
   const newChat = () => {
+    let chatHistory = JSON.parse(localStorage.getItem('chatHistory'));
+    if (chatHistory === null) {
+      chatHistory = [];
+      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+    let currentChatData = JSON.parse(localStorage.getItem('chatData'));
+
+    if (chatHistory.length <= 2) {
+      chatHistory.unshift({ chat: currentChatData });
+      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    } else {
+      chatHistory.pop();
+      chatHistory.unshift({ chat: currentChatData });
+      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+    toast.success('Conversation Saved!');
     localStorage.removeItem('chatData');
-    toast.success('Previous chats cleared!');
     setTimeout(() => {
       window.location.reload();
     }, 500);
   };
+
+  useEffect(() => {
+    const storedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    setStorageHistoryData(storedChatHistory);
+  }, []);
 
   return (
     <>
@@ -44,42 +72,53 @@ const SideBar = () => {
           </button>
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
-              <li className="p-1" onClick={featureNotAvailable}>
-                <span>
-                  <MdOutlineChat />
-                </span>
-                <span className="ml-1">
-                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-1</p>
-                </span>
-              </li>
-              <li className="p-1" onClick={featureNotAvailable}>
-                <span>
-                  <MdOutlineChat />
-                </span>
-                <span className="ml-1">
-                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-2</p>
-                </span>
-              </li>
-              <li className="p-1" onClick={featureNotAvailable}>
-                <span>
-                  <MdOutlineChat />
-                </span>
-                <span className="ml-1">
-                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-3</p>
-                </span>
-              </li>
+              {storageHistoryData.length > 0 ? (
+                storageHistoryData.map((item, index) => (
+                  <li key={index} className="p-1" onClick={featureNotAvailable}>
+                    <span>
+                      <MdOutlineChat />
+                    </span>
+                    <span className="ml-1">
+                      <p
+                        style={{
+                          fontWeight: '500',
+                          margin: 0
+                        }}>
+                        {item.chat[0].chatId}
+                      </p>
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <li className="p-1">
+                  <span>
+                    <AiOutlineStop />
+                  </span>
+                  <span className="ml-1">
+                    <p
+                      style={{
+                        fontWeight: '500',
+                        margin: 0
+                      }}>
+                      No Chat History
+                    </p>
+                  </span>
+                </li>
+              )}
             </ul>
           </div>
         </div>
         <div className="section2">
           <hr />
           <ul className="p-2">
-            <li style={{ paddingTop: 0 }} onClick={featureNotAvailable}>
+            <li
+              style={{ paddingTop: 0 }}
+              onClick={() => storageHistoryData.length > 0 && handleClearHistory()}>
               <span className="ml-2">
                 <RiDeleteBin5Line />
               </span>
               <span>
-                <p>Clear Prev.Chats</p>
+                <p>Clear History</p>
               </span>
             </li>
             <li onClick={featureNotAvailable}>
