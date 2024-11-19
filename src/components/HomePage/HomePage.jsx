@@ -103,6 +103,7 @@ const HomePage = () => {
               pauseOnHover
               theme="light"
               transition={Bounce}
+              style={{ textAlign: 'center', fontSize: '0.8em', fontWeight: '600' }}
             />
             <DropDowns
               facilityList={facilityList}
