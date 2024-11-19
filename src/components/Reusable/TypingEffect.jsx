@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-const TypingEffect = ({ text, typingSpeed }) => {
+const TypingEffect = ({ text, typingSpeed, setGptResDone }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -9,6 +9,7 @@ const TypingEffect = ({ text, typingSpeed }) => {
         setIndex((prevIndex) => prevIndex + 1);
       } else {
         clearInterval(interval);
+        setGptResDone(true);
       }
     }, typingSpeed);
 
@@ -16,7 +17,7 @@ const TypingEffect = ({ text, typingSpeed }) => {
   }, [index, text.length, typingSpeed]);
 
   return (
-    <div style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+    <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
       <span>{text.substring(0, index)}</span>
     </div>
   );

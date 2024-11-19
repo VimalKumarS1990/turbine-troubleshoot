@@ -1,10 +1,9 @@
-import React from "react";
-import "./ScrollToBottom.css";
-import { IoArrowDownCircleOutline } from "react-icons/io5";
+import React from 'react';
+import './ScrollToBottom.css';
+import { IoArrowDownCircleOutline } from 'react-icons/io5';
 
 const ScrollToBottom = ({ section }) => {
   const scrollToLastChild = (e) => {
-    console.log("ScrollToBottom");
     e.preventDefault();
     const targetSection = document.getElementById(section);
 
@@ -13,8 +12,8 @@ const ScrollToBottom = ({ section }) => {
 
       if (lastChild) {
         lastChild.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
+          behavior: 'smooth',
+          block: 'end'
         });
       }
     }
@@ -23,7 +22,7 @@ const ScrollToBottom = ({ section }) => {
   return (
     <div className="scroll-to-bottom-btn">
       <button className="btn-down" onClick={scrollToLastChild}>
-        <IoArrowDownCircleOutline style={{ fontSize: "2em" }} />
+        <IoArrowDownCircleOutline style={{ fontSize: '2em' }} />
       </button>
     </div>
   );

@@ -35,6 +35,16 @@ const HomePage = () => {
         {
           chatId: generateChatId(),
           role: botSystem,
+          // images: [
+          //   {
+          //     title: 'img-1',
+          //     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+          //   },
+          //   {
+          //     title: 'img-2',
+          //     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+          //   }
+          // ],
           timestamp: new Date().toLocaleString(),
           content:
             "Hello User! Welcome to WindTurbine Troubleshooter! \nI'm your assistant. Please select a Facility and Turbine above to start the conversation."
