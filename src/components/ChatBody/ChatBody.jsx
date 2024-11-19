@@ -3,6 +3,8 @@ import './ChatBody.css';
 import { RiRobot3Line } from 'react-icons/ri';
 import TypingEffect from '../Reusable/TypingEffect';
 import ScrollToBottom from '../Reusable/ScrollToBottom/ScrollToBottom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ChatBody = ({ chatData, botUser }) => {
   localStorage.setItem('chatData', JSON.stringify(chatData));
@@ -43,9 +45,30 @@ const ChatBody = ({ chatData, botUser }) => {
                       {item.images && gptResDone && (
                         <div className="d-flex">
                           {item.images.map((e, index) => (
-                            <a href={e.url} key={index} className="mx-1">
-                              {e.title}
-                            </a>
+                            <PhotoProvider key={index}>
+                              <PhotoView src={e.url}>
+                                <div
+                                  style={{
+                                    margin: '10px',
+                                    cursor: 'pointer',
+                                    textAlign: 'center'
+                                  }}>
+                                  <img
+                                    src={e.url}
+                                    alt={e.title}
+                                    style={{ width: '100px', height: 'auto' }}
+                                  />
+                                  <p
+                                    style={{
+                                      color: 'blue',
+                                      fontSize: '0.7em',
+                                      fontWeight: 'bold'
+                                    }}>
+                                    {e.title}
+                                  </p>
+                                </div>
+                              </PhotoView>
+                            </PhotoProvider>
                           ))}
                         </div>
                       )}

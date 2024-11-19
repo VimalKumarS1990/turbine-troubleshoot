@@ -12,3 +12,10 @@
   background-color: #f3eeeea6;
   border-radius: 10px;
 }
+
+.PhotoView-Slider__Backdrop {
+  background: #2125297d !important;
+}
+.PhotoView-Slider__BannerWrap {
+  background: transparent !important;
+}
