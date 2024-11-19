@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import "./SideBar.css";
-import { MdOutlineChat } from "react-icons/md";
-import { BiMenuAltLeft } from "react-icons/bi";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { CiLight } from "react-icons/ci";
-import { IoPersonOutline } from "react-icons/io5";
-import { IoMdOpen } from "react-icons/io";
-import { FiLogOut } from "react-icons/fi";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
+import './SideBar.css';
+import { MdOutlineChat } from 'react-icons/md';
+import { BiMenuAltLeft } from 'react-icons/bi';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { CiLight } from 'react-icons/ci';
+import { IoPersonOutline } from 'react-icons/io5';
+import { IoMdOpen } from 'react-icons/io';
+import { FiLogOut } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 const SideBar = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
 
@@ -16,26 +16,30 @@ const SideBar = () => {
   };
 
   const featureNotAvailable = () => {
-    toast.error("This feature is currently not available!");
+    toast.error('This feature is currently not available!');
+  };
+
+  const newChat = () => {
+    localStorage.removeItem('chatData');
+    toast.success('Previous chats cleared!');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
     <>
       <nav
-        className={`sidebar bg-light ${
-          isNavVisible ? "d-flex" : "d-none"
-        } d-lg-flex`}
+        className={`sidebar bg-light ${isNavVisible ? 'd-flex' : 'd-none'} d-lg-flex`}
         style={{
-          position: isNavVisible ? "absolute" : "relative",
-          height: isNavVisible ? "85%" : "auto",
-        }}
-      >
+          position: isNavVisible ? 'absolute' : 'relative',
+          height: isNavVisible ? '85%' : 'auto'
+        }}>
         <div className="section1">
           <button
             className="btn btn-dark mb-4"
-            style={{ fontSize: "0.9em", borderRadius: "50px" }}
-            onClick={featureNotAvailable}
-          >
+            style={{ fontSize: '0.9em', borderRadius: '50px' }}
+            onClick={newChat}>
             New Chat
           </button>
           <div className="chat d-flex align-items-center p-1">
@@ -45,9 +49,7 @@ const SideBar = () => {
                   <MdOutlineChat />
                 </span>
                 <span className="ml-1">
-                  <p style={{ fontWeight: "500", margin: 0 }}>
-                    Prev - WO-Conv-1
-                  </p>
+                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-1</p>
                 </span>
               </li>
               <li className="p-1" onClick={featureNotAvailable}>
@@ -55,9 +57,7 @@ const SideBar = () => {
                   <MdOutlineChat />
                 </span>
                 <span className="ml-1">
-                  <p style={{ fontWeight: "500", margin: 0 }}>
-                    Prev - WO-Conv-2
-                  </p>
+                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-2</p>
                 </span>
               </li>
               <li className="p-1" onClick={featureNotAvailable}>
@@ -65,9 +65,7 @@ const SideBar = () => {
                   <MdOutlineChat />
                 </span>
                 <span className="ml-1">
-                  <p style={{ fontWeight: "500", margin: 0 }}>
-                    Prev - WO-Conv-3
-                  </p>
+                  <p style={{ fontWeight: '500', margin: 0 }}>Prev - WO-Conv-3</p>
                 </span>
               </li>
             </ul>
@@ -126,16 +124,15 @@ const SideBar = () => {
         onClick={toggleNav}
         className="btn p-0 d-block d-lg-none"
         style={{
-          maxHeight: "50px",
-          fontSize: "2em",
-          background: "none",
-          border: "none",
-          zIndex: "1001",
-          marginLeft: "10px",
-          outline: "none",
+          maxHeight: '50px',
+          fontSize: '2em',
+          background: 'none',
+          border: 'none',
+          zIndex: '1001',
+          marginLeft: '10px',
+          outline: 'none'
         }}
-        aria-label="Toggle menu"
-      >
+        aria-label="Toggle menu">
         <BiMenuAltLeft />
       </button>
     </>
