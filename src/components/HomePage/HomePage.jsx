@@ -76,7 +76,8 @@ const HomePage = () => {
                 fontWeight: '600',
                 textShadow: '2px 2px 2px white',
                 margin: '0',
-                textAlign: 'center'
+                textAlign: 'center',
+                color: 'black'
               }}>
               Enbridge
             </p>
