@@ -70,8 +70,14 @@ const SideBar = () => {
             onClick={newChat}>
             New Chat
           </button>
+
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
+              <span
+                className="text-center"
+                style={{ textDecoration: 'underline', fontWeight: 600 }}>
+                <p>Chat History</p>
+              </span>
               {storageHistoryData.length > 0 ? (
                 storageHistoryData.map((item, index) => (
                   <li key={index} className="p-1" onClick={featureNotAvailable}>
@@ -100,7 +106,7 @@ const SideBar = () => {
                         fontWeight: '500',
                         margin: 0
                       }}>
-                      No Chat History
+                      No History Found
                     </p>
                   </span>
                 </li>

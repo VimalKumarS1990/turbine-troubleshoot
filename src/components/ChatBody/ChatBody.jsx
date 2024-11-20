@@ -60,9 +60,9 @@ const ChatBody = ({ chatData, botUser }) => {
                                   />
                                   <p
                                     style={{
-                                      color: 'blue',
+                                      color: 'GrayText',
                                       fontSize: '0.7em',
-                                      fontWeight: 'bold'
+                                      fontWeight: '600'
                                     }}>
                                     {e.title}
                                   </p>
