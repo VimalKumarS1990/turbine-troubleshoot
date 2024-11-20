@@ -8,11 +8,14 @@ import SideBar from '../../components/SideBar/SideBar';
 import { useState } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import DropDowns from '../../components/DropDowns/DropDowns';
+import notification from '../../../src/assets/audio/notification.mp3';
 
 const HomePage = () => {
   const popup = toast;
   const botSystem = 'gen-ai';
   const botUser = 'app-user';
+
+  const notificationSound = new Audio(notification);
 
   const facilityList = [
     { facilityCode: '001', facilityName: 'Facility 1' },
@@ -47,7 +50,6 @@ const HomePage = () => {
   };
 
   const [chatData, setChatData] = useState(loadChatData);
-  console.log('Chat-Data: ', chatData);
 
   const lastChatConv = chatData.length > 0 ? chatData[chatData.length - 1] : null;
 
@@ -113,6 +115,7 @@ const HomePage = () => {
               toast={popup}
               facility={facility}
               turbine={turbine}
+              notificationSound={notificationSound}
             />
           </div>
         </div>

@@ -1,11 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
 import './UserInputBox.css';
 import { MdKeyboardVoice } from 'react-icons/md';
 import { useSpeechRecognition } from 'react-speech-kit';
+
 const UserInputBox = (props) => {
-  const { botUser, botSystem, setChatData, facility, turbine, toast } = props;
-  console.log('Bot: ', botSystem);
+  const { botUser, botSystem, setChatData, chatData, facility, turbine, toast, notificationSound } =
+    props;
+  console.log('Chat Data: ', chatData);
 
   const [inputTxt, setInputTxt] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -42,36 +44,42 @@ const UserInputBox = (props) => {
     });
   };
 
-  // const getAiResponse = () => {
-  //   const responseContent = 'This is Sample Message with Image Content';
-  //   const responseObj = {
-  //     role: botSystem,
-  //     content: responseContent.replace(/\s+/g, ' ').trim(),
-  //     images: [
-  //       {
-  //         title: 'img-1',
-  //         url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
-  //       },
-  //       {
-  //         title: 'img-2',
-  //         url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
-  //       }
-  //     ]
-  //   };
-  //   setChatData((prev) => {
-  //     const genChatId = prev[0]?.chatId;
-  //     return [
-  //       ...prev,
-  //       {
-  //         ...responseObj,
-  //         chatId: genChatId,
-  //         facility: facility,
-  //         turbine: turbine,
-  //         timestamp: new Date().toLocaleString()
-  //       }
-  //     ];
-  //   });
-  // };
+  const getAiResponse = (newInput) => {
+    const responseContent = 'This is Sample Message with Image Content';
+
+    const responseObj = {
+      role: botSystem,
+      content: responseContent.replace(/\s+/g, ' ').trim(),
+      images: [
+        {
+          title: 'img-1',
+          url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+        },
+        {
+          title: 'img-2',
+          url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+        }
+      ]
+    };
+
+    console.log('Payload: ', newInput);
+    console.log('Response: ', responseObj);
+
+    notificationSound.play();
+    setChatData((prev) => {
+      const genChatId = prev[0]?.chatId;
+      return [
+        ...prev,
+        {
+          ...responseObj,
+          chatId: genChatId,
+          facility: facility,
+          turbine: turbine,
+          timestamp: new Date().toLocaleString()
+        }
+      ];
+    });
+  };
 
   const handleKeyInput = (event) => {
     if (event.key === 'Enter') {
@@ -86,7 +94,7 @@ const UserInputBox = (props) => {
         };
         addUserInput(newInput);
         setInputTxt('');
-        // getAiResponse();
+        // getAiResponse(newInput);
       }
       inputRef.current.focus();
     }
@@ -104,6 +112,7 @@ const UserInputBox = (props) => {
       };
       addUserInput(newInput);
       setInputTxt('');
+      // getAiResponse(newInput);
     }
     inputRef.current.focus();
   };
@@ -115,6 +124,13 @@ const UserInputBox = (props) => {
       toast.error('Max character limit exceeds!');
     }
   };
+
+  //**PlaceHolder**
+  const pholder = null;
+
+  useEffect(() => {
+    getAiResponse;
+  }, [pholder]);
 
   return (
     <div className="user-input bg-light">
