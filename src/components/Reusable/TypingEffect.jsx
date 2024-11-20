@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingEffect = ({ text, typingSpeed, setGptResDone }) => {
+const TypingEffect = ({ text, typingSpeed, setAiResDone }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const TypingEffect = ({ text, typingSpeed, setGptResDone }) => {
         setIndex((prevIndex) => prevIndex + 1);
       } else {
         clearInterval(interval);
-        setGptResDone(true);
+        setAiResDone(true);
       }
     }, typingSpeed);
 

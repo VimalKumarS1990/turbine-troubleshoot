@@ -14,7 +14,7 @@ const ChatBody = ({ chatData, botUser }) => {
     return sum + characterCount;
   }, 0);
 
-  const [gptResDone, setGptResDone] = useState(false);
+  const [aiResDone, setAiResDone] = useState(false);
 
   return (
     <div id="parent" className="col chat-container">
@@ -39,10 +39,10 @@ const ChatBody = ({ chatData, botUser }) => {
                         <TypingEffect
                           text={item.content}
                           typingSpeed={50}
-                          setGptResDone={setGptResDone}
+                          setAiResDone={setAiResDone}
                         />
                       </span>
-                      {item.images && gptResDone && (
+                      {item.images && aiResDone && (
                         <div className="d-flex">
                           {item.images.map((e, index) => (
                             <PhotoProvider key={index}>

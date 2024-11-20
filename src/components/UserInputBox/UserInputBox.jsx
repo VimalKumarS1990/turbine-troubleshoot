@@ -4,7 +4,8 @@ import './UserInputBox.css';
 import { MdKeyboardVoice } from 'react-icons/md';
 import { useSpeechRecognition } from 'react-speech-kit';
 const UserInputBox = (props) => {
-  const { botUser, setChatData, facility, turbine, toast } = props;
+  const { botUser, botSystem, setChatData, facility, turbine, toast } = props;
+  console.log('Bot: ', botSystem);
 
   const [inputTxt, setInputTxt] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -13,7 +14,7 @@ const UserInputBox = (props) => {
   const maxInputChar = 1000;
 
   const { listen, stop } = useSpeechRecognition({
-    onResult: (result) => setInputTxt(result).trim()
+    onResult: (result) => setInputTxt(result.trim())
   });
 
   const handleMouseDown = () => {
@@ -28,7 +29,7 @@ const UserInputBox = (props) => {
 
   const addUserInput = (newInput) => {
     setChatData((prev) => {
-      const genChatId = prev[0].chatId;
+      const genChatId = prev[0]?.chatId;
       const updatedUserInput = [
         ...prev,
         {
@@ -41,6 +42,37 @@ const UserInputBox = (props) => {
     });
   };
 
+  // const getAiResponse = () => {
+  //   const responseContent = 'This is Sample Message with Image Content';
+  //   const responseObj = {
+  //     role: botSystem,
+  //     content: responseContent.replace(/\s+/g, ' ').trim(),
+  //     images: [
+  //       {
+  //         title: 'img-1',
+  //         url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+  //       },
+  //       {
+  //         title: 'img-2',
+  //         url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
+  //       }
+  //     ]
+  //   };
+  //   setChatData((prev) => {
+  //     const genChatId = prev[0]?.chatId;
+  //     return [
+  //       ...prev,
+  //       {
+  //         ...responseObj,
+  //         chatId: genChatId,
+  //         facility: facility,
+  //         turbine: turbine,
+  //         timestamp: new Date().toLocaleString()
+  //       }
+  //     ];
+  //   });
+  // };
+
   const handleKeyInput = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -51,23 +83,15 @@ const UserInputBox = (props) => {
           turbine: turbine,
           role: botUser,
           content: trimmedInputValue
-          // images: [
-          //   {
-          //     title: 'img-1',
-          //     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
-          //   },
-          //   {
-          //     title: 'img-2',
-          //     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbyUnWNeGlyy65hkimOvrxWIy94rPoiQNDfA&s'
-          //   }
-          // ]
         };
         addUserInput(newInput);
         setInputTxt('');
+        // getAiResponse();
       }
       inputRef.current.focus();
     }
   };
+
   const handleSendButton = (event) => {
     event.preventDefault();
     const trimmedInputValue = inputTxt.replace(/\s+/g, ' ').trim();
@@ -109,7 +133,6 @@ const UserInputBox = (props) => {
           onMouseUp={handleMouseUp}>
           <MdKeyboardVoice style={{ width: '25px', height: '25px' }} />
         </button>
-
         <textarea
           type="text"
           disabled={!(facility && turbine)}

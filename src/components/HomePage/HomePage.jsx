@@ -11,8 +11,8 @@ import DropDowns from '../../components/DropDowns/DropDowns';
 
 const HomePage = () => {
   const popup = toast;
-  const botSystem = 'gpt';
-  const botUser = 'user';
+  const botSystem = 'gen-ai';
+  const botUser = 'app-user';
 
   const facilityList = [
     { facilityCode: '001', facilityName: 'Facility 1' },
@@ -107,6 +107,7 @@ const HomePage = () => {
             <ChatSpace chatData={chatData} botUser={botUser} />
             <UserInputBox
               botUser={botUser}
+              botSystem={botSystem}
               setChatData={setChatData}
               chatData={chatData}
               toast={popup}
