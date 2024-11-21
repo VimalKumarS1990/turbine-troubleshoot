@@ -86,10 +86,21 @@ const SideBar = (props) => {
         }}>
         <div className="section1">
           <button
-            className="btn mb-4 text-white"
+            className="btn mb-4 text-white d-flex justify-content-center"
             style={{ fontSize: '0.9em', borderRadius: '50px', backgroundColor: 'rgb(8 107 139)' }}
             onClick={newChat}>
-            New Chat
+            <span className="me-1">
+              <MdOutlineChat />
+            </span>
+            <span className="ml-1">
+              <p
+                style={{
+                  fontWeight: '500',
+                  margin: 0
+                }}>
+                New Chat
+              </p>
+            </span>
           </button>
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
@@ -137,7 +148,7 @@ const SideBar = (props) => {
             className="btn mb-4 text-white d-flex justify-content-center"
             style={{ fontSize: '0.9em', borderRadius: '50px', backgroundColor: 'rgb(8 107 139)' }}
             onClick={handleShowWrkLog}>
-            <span>
+            <span className="me-1">
               <IoBookOutline />
             </span>
             <span className="ml-1">
