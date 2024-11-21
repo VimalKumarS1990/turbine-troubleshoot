@@ -16,7 +16,8 @@ const DropDowns = (props) => {
     <div className="d-flex dropDown-container my-1 ml-2">
       <div className="dropdown">
         <button
-          className="btn btn-dark btn-sm dropdown-toggle dropdown-btn"
+          className="btn btn-sm dropdown-toggle dropdown-btn text-white"
+          style={{ backgroundColor: 'rgb(8 107 139)' }}
           type="button"
           id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
@@ -37,7 +38,8 @@ const DropDowns = (props) => {
       </div>
       <div className="dropdown ml-2 sec2">
         <button
-          className="btn btn-dark btn-sm dropdown-toggle dropdown-btn"
+          className="btn btn-sm dropdown-toggle dropdown-btn text-white"
+          style={{ backgroundColor: 'rgb(8 107 139)' }}
           type="button"
           id="dropdownMenuButton2"
           data-bs-toggle="dropdown"

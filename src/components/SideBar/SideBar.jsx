@@ -65,8 +65,8 @@ const SideBar = () => {
         }}>
         <div className="section1">
           <button
-            className="btn btn-dark mb-4"
-            style={{ fontSize: '0.9em', borderRadius: '50px' }}
+            className="btn mb-4 text-white"
+            style={{ fontSize: '0.9em', borderRadius: '50px', backgroundColor: 'rgb(8 107 139)' }}
             onClick={newChat}>
             New Chat
           </button>

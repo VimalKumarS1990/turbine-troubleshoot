@@ -127,7 +127,6 @@ const UserInputBox = (props) => {
 
   //**PlaceHolder**
   const pholder = null;
-
   useEffect(() => {
     getAiResponse;
   }, [pholder]);
@@ -136,14 +135,14 @@ const UserInputBox = (props) => {
     <div className="user-input bg-light">
       <div className="inner-box ">
         <button
-          className="btn"
+          className="btn vtxt"
           disabled={!(facility && turbine)}
           style={{
             borderRadius: '50px',
             padding: '0',
             border: '1px solid black',
-            backgroundColor: isListening ? 'green' : '',
-            color: isListening ? 'white' : ''
+            backgroundColor: isListening ? 'green' : 'rgb(8 107 139)',
+            color: 'white'
           }}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}>
@@ -164,14 +163,14 @@ const UserInputBox = (props) => {
           onChange={handleOnChange}
           style={{ height: inputTxt.length > 100 ? '50px' : '30px' }}></textarea>
         <button
-          className="btn"
+          className="btn sendbtn"
           disabled={!(facility && turbine)}
           style={{
             borderRadius: '50px',
             padding: '0',
             border: '1px solid black',
             backgroundColor: inputTxt.length > 0 ? 'white' : '',
-            color: inputTxt.length > 0 ? 'green' : ''
+            color: inputTxt.length > 0 ? 'green' : 'rgb(8 107 139)'
           }}
           onClick={handleSendButton}>
           <FaArrowCircleUp style={{ width: '32px', height: '32px' }} />

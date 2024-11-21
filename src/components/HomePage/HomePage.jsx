@@ -60,21 +60,30 @@ const HomePage = () => {
     <div className="App container-fluid p-1">
       <header className="row m-1">
         <div className="m-auto header header-bg img-fluid">
-          <a
-            href="/"
-            className="p-2 ml-2 navbar-brand d-flex  align-items-center justify-content-center">
-            <img src={brandLogo} alt="brand-logo" height="50" loading="lazy" />
+          <div className="p-2 ml-2 navbar-brand d-flex  align-items-center justify-content-center">
+            <img
+              src={brandLogo}
+              alt="brand-logo"
+              height="50"
+              loading="lazy"
+              style={{ pointerEvents: 'none' }}
+            />
             <p
               style={{
-                fontWeight: '600',
+                zIndex: '1000',
+                fontWeight: '700',
+                fontStyle: 'italic',
                 textShadow: '2px 2px 2px white',
                 margin: '0',
+                marginLeft: '-15px',
+                marginTop: '10px',
                 textAlign: 'center',
-                color: 'black'
+                color: 'black',
+                fontSize: '1em'
               }}>
-              Enbridge
+              ENBRIDGE
             </p>
-          </a>
+          </div>
           <div className="header-text">
             <p className="heading m-auto">WindTurbine Troubleshooter</p>
           </div>
