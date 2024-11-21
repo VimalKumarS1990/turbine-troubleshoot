@@ -56,6 +56,9 @@ const HomePage = () => {
   const [facility, setFacility] = useState(lastChatConv.facility || null);
   const [turbine, setTurbine] = useState(lastChatConv.turbine || null);
 
+  const [showWrkLog, setShowWrkLog] = useState(false);
+  const [showFaq, setShowFaq] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   return (
     <div className="App container-fluid p-1">
       <header className="row m-1">
@@ -91,7 +94,11 @@ const HomePage = () => {
       </header>
       <div className="container-fluid p-1">
         <div className="d-flex">
-          <SideBar />
+          <SideBar
+            setShowFaq={setShowFaq}
+            setShowProfile={setShowProfile}
+            setShowWrkLog={setShowWrkLog}
+          />
           <div className="col pl-0">
             <ToastContainer
               position="top-center"
@@ -115,7 +122,16 @@ const HomePage = () => {
               setFacility={setFacility}
               setTurbine={setTurbine}
             />
-            <ChatSpace chatData={chatData} botUser={botUser} />
+            <ChatSpace
+              chatData={chatData}
+              botUser={botUser}
+              showFaq={showFaq}
+              setShowFaq={setShowFaq}
+              showProfile={showProfile}
+              setShowProfile={setShowProfile}
+              showWrkLog={showWrkLog}
+              setShowWrkLog={setShowWrkLog}
+            />
             <UserInputBox
               botUser={botUser}
               botSystem={botSystem}

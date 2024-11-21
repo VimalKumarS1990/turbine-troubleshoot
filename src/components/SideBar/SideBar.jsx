@@ -8,8 +8,11 @@ import { IoPersonOutline } from 'react-icons/io5';
 import { IoMdOpen } from 'react-icons/io';
 import { FiLogOut } from 'react-icons/fi';
 import { AiOutlineStop } from 'react-icons/ai';
+import { IoBookOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
-const SideBar = () => {
+const SideBar = (props) => {
+  const { setShowFaq, setShowProfile, setShowWrkLog } = props;
+
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [storageHistoryData, setStorageHistoryData] = useState([]);
 
@@ -25,6 +28,24 @@ const SideBar = () => {
     localStorage.removeItem('chatHistory');
     setStorageHistoryData([]);
     toast.success('Chat History Cleared!');
+  };
+
+  const handleShowWrkLog = () => {
+    setShowWrkLog(true);
+    setShowFaq(false);
+    setShowProfile(false);
+  };
+
+  const handleFaq = () => {
+    setShowFaq(true);
+    setShowProfile(false);
+    setShowWrkLog(false);
+  };
+
+  const handleShowProfile = () => {
+    setShowProfile(true);
+    setShowFaq(false);
+    setShowWrkLog(false);
   };
 
   const newChat = () => {
@@ -70,7 +91,6 @@ const SideBar = () => {
             onClick={newChat}>
             New Chat
           </button>
-
           <div className="chat d-flex align-items-center p-1">
             <ul className="p-0">
               <span
@@ -113,6 +133,23 @@ const SideBar = () => {
               )}
             </ul>
           </div>
+          <button
+            className="btn mb-4 text-white d-flex justify-content-center"
+            style={{ fontSize: '0.9em', borderRadius: '50px', backgroundColor: 'rgb(8 107 139)' }}
+            onClick={handleShowWrkLog}>
+            <span>
+              <IoBookOutline />
+            </span>
+            <span className="ml-1">
+              <p
+                style={{
+                  fontWeight: '500',
+                  margin: 0
+                }}>
+                View Work Log
+              </p>
+            </span>
+          </button>
         </div>
         <div className="section2">
           <hr />
@@ -135,7 +172,7 @@ const SideBar = () => {
                 <p>Light Mode</p>
               </span>
             </li>
-            <li onClick={featureNotAvailable}>
+            <li onClick={handleShowProfile}>
               <span className="ml-2">
                 <IoPersonOutline />
               </span>
@@ -143,7 +180,7 @@ const SideBar = () => {
                 <p>My Profile</p>
               </span>
             </li>
-            <li onClick={featureNotAvailable}>
+            <li onClick={handleFaq}>
               <span className="ml-2">
                 <IoMdOpen />
               </span>
