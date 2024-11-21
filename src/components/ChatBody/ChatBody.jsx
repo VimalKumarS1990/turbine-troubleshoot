@@ -38,7 +38,7 @@ const ChatBody = ({ chatData, botUser }) => {
                         <RiRobot3Line style={{ fontSize: '1.5em' }} />
                         <TypingEffect
                           text={item.content}
-                          typingSpeed={50}
+                          typingSpeed={10}
                           setAiResDone={setAiResDone}
                         />
                       </span>
